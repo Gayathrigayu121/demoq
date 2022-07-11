@@ -1,3 +1,35 @@
-class gayu{
-xcZDCs
-}
+int ddClicksize=dropdownClick.size();
+		
+
+		for(int i=0;i<ddClicksize;i++)
+		{
+			System.out.println("ddClicksize initial = "+ddClicksize);
+		wait.until(ExpectedConditions.visibilityOfAllElements(dropdownClick));
+		if(i%2==0) {
+				System.out.println("i = "+ i);
+				WebElement webElement2 = dropdownClick.get(i);
+				wait.until(ExpectedConditions.visibilityOfAllElements(webElement2));
+			dropdownClick.get(i).click();
+			//List<WebElement> dropDownList = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("body > div.multiselect__content-wrapper > ul.multiselect__content > li.multiselect__element > span")));
+			List<WebElement> dropDownList =driver.findElements(By.cssSelector("body > div.multiselect__content-wrapper > ul.multiselect__content > li.multiselect__element > span"));
+			List<String> symOptions = new ArrayList<String>();
+			for (WebElement copyElement : dropDownList) {
+				symOptions.add(copyElement.getAttribute("innerText").trim());
+				
+			}
+			  Set<String> set = new LinkedHashSet<>(symOptions);
+			  
+		        List<String> newList = new ArrayList<>(set);
+			System.out.println("symOptions = "+newList);
+			int randomIntValue1 = ((int) (Math.random() * (8 - 2)))+ 2;
+			
+			System.out.println("randomIntValue1 =  "+randomIntValue1);
+			
+			WebElement webElement = dropDownList.get(randomIntValue1);
+			
+			js.executeScript("arguments[0].click();", webElement);
+			
+			System.out.println("ddClicksize = "+ddClicksize);
+			int ddClicksize1=dropdownClick.size();
+      }
+      }
